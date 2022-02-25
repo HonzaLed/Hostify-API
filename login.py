@@ -26,30 +26,13 @@ def initialize_browser():
                                 return webdriver.Ie()
                             except:
                                 raise Exception("No compatible browser found!")
-
-
 def getSession():
     driver = initialize_browser()
     driver.get("https://admin.hostify.cz/login")
-
     driver.find_element(by=By.CLASS_NAME, value="custom-control-label").click()
-
     while driver.current_url == "https://admin.hostify.cz/login":
-        #print("[DEBUG] Waiting!")
         time.sleep(1)
-
     driver.get("https://gql.hostify.cz/gql")
     session = driver.get_cookie("session")
     driver.close()
     return session["value"]
-
-"""
-PACKAGE CONTENTS
-    chrome (package)
-    chromium (package)
-    edge (package)
-    firefox (package)
-    ie (package)
-    opera (package)
-    safari (package)
-"""
