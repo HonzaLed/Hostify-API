@@ -9,7 +9,7 @@ You can get the session key by calling the ```getSession``` function from file `
 import login
 sessionKey = login.getSession()
 ````
-That will open your web browser using library named ```selenium```, it will redirect you to login page, you must make sure that you check the ```Remember me``` button.  
+That will open your web browser using library named ```selenium```, it will redirect you to login page, when you log in, the browser will be closed and the session will be returned from the function
 
 Then you can initialize the API using the following code:
 ````
