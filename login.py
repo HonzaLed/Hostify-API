@@ -41,7 +41,7 @@ def getSession():
     driver.get("https://gql.hostify.cz/gql")
     session = driver.get_cookie("session")
     driver.close()
-    return session
+    return session["value"]
 
 """
 PACKAGE CONTENTS

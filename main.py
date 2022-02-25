@@ -51,6 +51,10 @@ class Hostify:
             if not service["shared"]:
                 cache.append(service)
         return cache
+    def getAllServers(self):
+        data = {"operationName":"getAllServers","variables":{},"query":"query getAllServers {\n  minecraftServers {\n    ...FullMinecraftServer\n    __typename\n  }\n}\n\nfragment FullMinecraftServer on MinecraftServer {\n  id\n  name\n  ip\n  port\n  dns\n  eula\n  jar\n  expires\n  shared\n  status\n  ownedBy\n  favicon\n  dedicated {\n    hostname\n    __typename\n  }\n  permissions {\n    read\n    write\n    __typename\n  }\n  storage {\n    used\n    reserved\n    __typename\n  }\n  package {\n    ram\n    __typename\n  }\n  players {\n    online\n    max\n    list\n    __typename\n  }\n  version {\n    type\n    version\n    image\n    __typename\n  }\n  resources {\n    type\n    tps\n    __typename\n  }\n  __typename\n}\n"}
+        r = self.__makeRequest(data)
+        return r["data"]["minecraftServers"]
 
 client = Hostify(session)
 print(client.getAlerts()[0]["message"])
