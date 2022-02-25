@@ -7,9 +7,12 @@ try:
 except:
     session = login.getSession()
 
-print(session)
+debug = True
 
-class Hostify:
+if debug:
+    print("[DEBUG]", session)
+
+class HostifyAPI:
     def __init__(self, session, gqlAddress="https://gql.hostify.cz/gql"):
         self.address = gqlAddress
         self.cookies = {"session": session}
@@ -56,7 +59,8 @@ class Hostify:
         r = self.__makeRequest(data)
         return r["data"]["minecraftServers"]
 
-client = Hostify(session)
-print(client.getAlerts()[0]["message"])
-print(client.getUserServices())
-print(client.getUserNoSharedServices())
+client = HostifyAPI(session)
+if debug:
+    print(client.getAlerts()[0]["message"])
+    print(client.getUserServices())
+    print(client.getUserNoSharedServices())
