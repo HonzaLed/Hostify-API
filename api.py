@@ -71,19 +71,31 @@ class HostifyAPI:
     def minecraftServerControlRestart(self, id):
         data = {"operationName":"minecraftServerControlRestart","variables":{"id":id},"query":"mutation minecraftServerControlRestart($id: ID!) {\n  minecraftServerControlRestart(id: $id)\n}\n"}
         r = self.__makeRequest(data)
-        return r["data"]["minecraftServerControlRestart"]
+        try:
+            return r["data"]["minecraftServerControlRestart"]
+        except:
+            return False
 
     def minecraftServerControlKill(self, id):
         data = {"operationName":"minecraftServerControlKill","variables":{"id":id},"query":"mutation minecraftServerControlKill($id: ID!) {\n  minecraftServerControlKill(id: $id)\n}\n"}
         r = self.__makeRequest(data)
-        return r["data"]["minecraftServerControlKill"]
+        try:
+            return r["data"]["minecraftServerControlKill"]
+        except:
+            return False
 
     def minecraftServerControlStop(self, id):
         data = {"operationName":"minecraftServerControlStop","variables":{"id":id},"query":"mutation minecraftServerControlStop($id: ID!) {\n  minecraftServerControlStop(id: $id)\n}\n"}
         r = self.__makeRequest(data)
-        return r["data"]["minecraftServerControlStop"]
+        try:
+            return r["data"]["minecraftServerControlStop"]
+        except:
+            return False
 
     def minecraftServerControlStart(self, id):
         data = {"operationName":"minecraftServerControlStart","variables":{"id":id},"query":"mutation minecraftServerControlStart($id: ID!) {\n  minecraftServerControlStart(id: $id)\n}\n"}
         r = self.__makeRequest(data)
-        return r["data"]["minecraftServerControlStart"]
+        try:
+            return r["data"]["minecraftServerControlStart"]
+        except:
+            return False
