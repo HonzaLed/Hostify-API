@@ -29,7 +29,6 @@ def initialize_browser():
 def getSession():
     driver = initialize_browser()
     driver.get("https://admin.hostify.cz/login")
-    driver.find_element(by=By.CLASS_NAME, value="custom-control-label").click()
     while driver.current_url == "https://admin.hostify.cz/login":
         time.sleep(1)
     driver.get("https://gql.hostify.cz/gql")
