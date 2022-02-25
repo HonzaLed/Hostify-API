@@ -1,7 +1,7 @@
 import requests
 import login
 
-#Only for testing, you can write session = "mysessionkey" to file names mySession.py so you dont have to log in every time
+#Only for testing, you can write session = "mysessionkey" to file named mySession.py so you dont have to log in every time
 try:
     from mySession import session
 except:
