@@ -1,3 +1,4 @@
+import urllib.parse
 import requests
 
 class HostifyAPI:
@@ -9,11 +10,13 @@ class HostifyAPI:
             print("[INFO] Logged in as", self.account["username"])
         else:
             raise Exception("[ERROR] Could not log in, please try again!")
-    def __makeRequest(self, data, method="POST"):
+    def __makeRequest(self, data, method="POST", url=None):
+        if url == None:
+            url = self.address
         if method == "POST":
-            r = requests.post(self.address, cookies=self.cookies, json=data)
+            r = requests.post(url, cookies=self.cookies, json=data)
         if method == "GET":
-            r = requests.post(self.address, cookies=self.cookies)
+            r = requests.post(url, cookies=self.cookies)
         try:
             return r.json()
         except BaseException as err:
@@ -99,3 +102,17 @@ class HostifyAPI:
             return r["data"]["minecraftServerControlStart"]
         except:
             return False
+    def getMinecraftServerBackups(self, id):
+        path = urllib.parse.quote("/backups/minecraft/"+str(id))
+        url = "https://gql.hostify.cz/files/list?path="+path
+        r = requests.get(url, cookies=self.cookies).json()
+        return r["files"]
+    def getMinecraftServerBackupDownloadURL(self, id, backup):
+        path = "/backups/minecraft/"+str(id)+"/"+str(backup)
+        path = urllib.parse.quote(path)
+        url = "https://gql.hostify.cz/files/data?path="+path
+        return url
+    def minecraftServerReinstall(self, id, version, clean=False):
+        data = {"operationName":"minecraftServerReinstall","variables":{"id":id,"version":version,"clean":clean},"query":"mutation minecraftServerReinstall($id: ID!, $version: ID!, $clean: Boolean!) {\n  minecraftServerReinstall(id: $id, version: $version, clean: $clean) {\n    id\n    __typename\n  }\n}\n"}
+        r = self.__makeRequest(data)
+        return r
