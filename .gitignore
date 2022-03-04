@@ -2,3 +2,6 @@ mySession.py
 __pycache__
 __pycache__/*
 geckodriver.log
+
+.idea
+.idea/*
