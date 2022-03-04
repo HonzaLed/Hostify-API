@@ -2,6 +2,11 @@
 This is Hostify API wrapper written in Python.  
 You can use it to control your minecraft servers, get logs, monitor CPU, RAM and SSD usage.  
 
+#! DISCLAIMER !  
+This can get your Hostify.cz account banned  
+This program won't be receiving updates anymore  
+This repo is archived, you can still use it, but at your own risk!!!   
+
 ### How to use it
 The API is located in file ```api.py```, but in order to work, you need to get Hostify session key.  
 You can get the session key by calling the ```getSession``` function from file ```login.py``` like so:
