@@ -2,7 +2,7 @@
 This is Hostify API wrapper written in Python.  
 You can use it to control your minecraft servers, get logs, monitor CPU, RAM and SSD usage.  
 
-#! DISCLAIMER !  
+# ! DISCLAIMER !  
 This can get your Hostify.cz account banned  
 This program won't be receiving updates anymore  
 This repo is archived, you can still use it, but at your own risk!!!   
